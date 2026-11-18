@@ -1,0 +1,16 @@
+{
+  "name": "cf-ai-logistics-copilot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI logistics copilot on Cloudflare: chat-driven shipment/RMA tracking with Workers AI, Durable Objects and Workflows",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "types": "wrangler types",
+    "check": "tsc --noEmit && wrangler deploy --dry-run --outdir dist"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "wrangler": "^4.0.0"
+  }
+}

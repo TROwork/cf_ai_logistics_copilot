@@ -1,0 +1,32 @@
+:root {
+  --bg: #f7f7f8; --panel: #ffffff; --text: #1d1d1f; --muted: #6b6b73;
+  --accent: #f6821f; --border: #e3e3e8; --user: #fff3e8; --bot: #f1f1f4;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #141416; --panel: #1d1d21; --text: #ececf1; --muted: #9a9aa5;
+          --border: #2e2e35; --user: #3a2a1c; --bot: #26262c; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; font: 15px/1.45 system-ui, sans-serif; background: var(--bg); color: var(--text); }
+header { padding: 16px; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
+header h1 { margin: 0; font-size: 20px; }
+header p { margin: 0; color: var(--muted); flex: 1 1 300px; }
+main { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 16px; padding: 16px; height: calc(100vh - 80px); }
+@media (max-width: 800px) { main { grid-template-columns: 1fr; height: auto; } }
+#chat-panel, aside { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 12px; overflow: auto; }
+#chat-panel { display: flex; flex-direction: column; min-height: 420px; }
+#messages { flex: 1; overflow: auto; display: flex; flex-direction: column; gap: 8px; }
+.msg { padding: 8px 12px; border-radius: 8px; max-width: 90%; white-space: pre-wrap; }
+.msg.user { background: var(--user); align-self: flex-end; }
+.msg.assistant { background: var(--bot); align-self: flex-start; }
+.msg .applied { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); }
+#composer { display: flex; gap: 8px; margin-top: 12px; }
+#composer textarea { flex: 1; resize: vertical; padding: 8px; font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 6px; }
+button { background: var(--accent); color: #fff; border: 0; border-radius: 6px; padding: 8px 14px; font: inherit; cursor: pointer; }
+button:disabled { opacity: .6; cursor: wait; }
+#reset { background: transparent; color: var(--text); border: 1px solid var(--border); }
+aside h2 { font-size: 15px; margin: 4px 0 8px; }
+.item, .reminder { border: 1px solid var(--border); border-radius: 6px; padding: 8px; margin-bottom: 8px; font-size: 13px; }
+.item.closed { opacity: .55; }
+.item b, .reminder b { font-size: 14px; }
+.muted { color: var(--muted); font-size: 13px; }

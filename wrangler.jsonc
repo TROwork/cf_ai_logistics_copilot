@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cf-ai-logistics-copilot",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-09-01",
+  "observability": { "enabled": true },
+
+  // Static chat UI (Workers static assets). Unmatched paths fall through to the Worker.
+  "assets": { "directory": "./public", "binding": "ASSETS" },
+
+  // LLM: Llama 3.3 on Workers AI
+  "ai": { "binding": "AI" },
+
+  // Memory / state: one SQLite-backed Durable Object per chat session
+  "durable_objects": {
+    "bindings": [{ "name": "LOGBOOK", "class_name": "Logbook" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Logbook"] }],
+
+  // Coordination: durable follow-up timers
+  "workflows": [
+    { "name": "logistics-followup", "binding": "FOLLOWUP", "class_name": "FollowupWorkflow" }
+  ]
+}

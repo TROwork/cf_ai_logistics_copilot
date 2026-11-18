@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logistics Copilot</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Logistics Copilot</h1>
+    <p>Log shipments, RMAs and spare parts in plain language. Ask for a follow-up and it will remind you.</p>
+    <button id="reset" type="button">New session</button>
+  </header>
+  <main>
+    <section id="chat-panel">
+      <div id="messages" aria-live="polite"></div>
+      <form id="composer">
+        <textarea id="input" rows="2" placeholder="e.g. 12 servers from the rack integrator ship to the Frankfurt site, ETA Friday, ref PO-4471. Remind me in 2 minutes."></textarea>
+        <button type="submit" id="send">Send</button>
+      </form>
+    </section>
+    <aside>
+      <h2>Open items</h2>
+      <div id="items"></div>
+      <h2>Reminders</h2>
+      <div id="reminders"><p class="muted">Follow-ups that come due while an item is still open show up here with a drafted nudge.</p></div>
+    </aside>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
