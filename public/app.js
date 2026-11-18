@@ -43,8 +43,10 @@ function renderState(state) {
   }
 
   const rem = $("reminders");
-  if (state.reminders.length) {
-    rem.replaceChildren();
+  rem.replaceChildren();
+  if (!state.reminders.length) {
+    rem.appendChild(el("p", "muted", "Follow-ups that come due while an item is still open show up here with a drafted nudge."));
+  } else {
     for (const r of state.reminders) {
       const card = el("div", "reminder");
       card.appendChild(el("b", "", `Follow-up due on #${r.item_id}: ${r.note}`));
@@ -69,7 +71,7 @@ async function loadState(withMessages) {
 $("composer").addEventListener("submit", async (e) => {
   e.preventDefault();
   const message = $("input").value.trim();
-  if (!message) return;
+  if (!message || $("send").disabled) return;
   $("input").value = "";
   addMessage("user", message);
   $("send").disabled = true;
@@ -101,6 +103,8 @@ $("reset").addEventListener("click", () => {
   loadState(false);
 });
 
-loadState(true);
+// Restore the session before allowing input, so the first load cannot wipe a message just sent.
+$("send").disabled = true;
+loadState(true).finally(() => { $("send").disabled = false; });
 // Poll so reminders posted by the Workflow appear without a reload.
 setInterval(() => loadState(false), 15000);
