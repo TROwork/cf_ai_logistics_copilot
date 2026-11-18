@@ -1,12 +1,13 @@
 # Prompt history
 
 The project was built with Claude Code (Anthropic, model Claude Opus 5.5) as the coding assistant.
+It started as Cloudflare's optional candidate assignment (brief below) and is kept as a reference build.
 Below are my prompts in order, verbatim, with the assistant's clarifying question where it asked one.
-Prompts about unrelated work in the same session are left out.
+Prompts about unrelated work in the same session, and one scheduling remark, are left out.
 
 ---
 
-**1. The assignment, pasted in**
+**1. The brief, pasted in**
 
 > Optional Assignment: Please share GitHub repo URL for the project here
 > We plan to fast track candidates who complete an assignment to build a type of AI-powered application on Cloudflare. An AI-powered application should include the following components:
@@ -17,9 +18,7 @@ Prompts about unrelated work in the same session are left out.
 > Find additional documentation here.
 > Note: AI-assisted coding is encouraged, but you have to submit prompt history.
 
-**2.**
-
-> So cloudflare we can next - it was just more elaborate that is why I didn't do it during the apply workflow
+**2. Starting the build** (a scheduling remark, omitted)
 
 **Assistant's question:** What should we build? It proposed a logistics copilot tied to the role:
 chat with Llama 3.3 on Workers AI to log hardware shipments and RMAs, a Durable Object holding the open

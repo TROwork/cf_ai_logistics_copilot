@@ -12,7 +12,7 @@ item is still open when the reminder comes due, it drafts a nudge for the vendor
 
 **Live demo:** https://cf-ai-logistics-copilot.cf-ai-logistics-copilot.workers.dev
 
-## How it meets the assignment
+## Architecture
 
 | Component | Implementation |
 |---|---|
